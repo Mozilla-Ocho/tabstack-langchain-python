@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "langchain-tabstack"
+version = "0.1.0"
+description = "Tabstack tools for LangChain. Schema-enforced web extraction and research, backed by the official Tabstack SDK."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Tabstack" }]
+keywords = ["tabstack", "langchain", "tools", "agent", "web-scraping", "extraction"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "tabstack>=2.6.1",
+  "langchain-core>=0.3,<2",
+  "pydantic>=2",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pytest-mock>=3"]
+dev = ["ruff>=0.6"]
+
+[project.urls]
+Homepage = "https://tabstack.ai"
+Documentation = "https://docs.tabstack.ai"
+Source = "https://github.com/tabstack/langchain-tabstack"
+
+[tool.hatch.build.targets.wheel]
+packages = ["langchain_tabstack"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+# UP (pyupgrade) is intentionally omitted: it rewrites typing.Optional/Dict/List
+# to PEP 604/585 syntax, which fails at runtime when pydantic evaluates these
+# annotations on Python 3.9 (the supported floor).
+select = ["E", "F", "I", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
