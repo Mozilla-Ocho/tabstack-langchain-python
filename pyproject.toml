@@ -34,7 +34,7 @@ dev = ["ruff>=0.6"]
 [project.urls]
 Homepage = "https://tabstack.ai"
 Documentation = "https://docs.tabstack.ai"
-Source = "https://github.com/tabstack/langchain-tabstack"
+Source = "https://github.com/Mozilla-Ocho/tabstack-langchain-python"
 
 [tool.hatch.build.targets.wheel]
 packages = ["langchain_tabstack"]
