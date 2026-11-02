@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "langchain-tabstack"
-version = "0.1.0"
+version = "0.1.1"
 description = "Tabstack tools for LangChain. Schema-enforced web extraction and research, backed by the official Tabstack SDK."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Tabstack" }]
-keywords = ["tabstack", "langchain", "tools", "agent", "web-scraping", "extraction"]
+keywords = ["tabstack", "langchain", "tools", "agent", "web-research", "web-extraction", "browser-automation", "extraction"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",

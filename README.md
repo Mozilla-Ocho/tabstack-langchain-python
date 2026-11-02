@@ -1,8 +1,9 @@
 # langchain-tabstack
 
-Give your [LangChain](https://python.langchain.com) agents reliable web access. Schema-enforced
-extraction, multi-source research, AI transformation, and browser automation, all as native
-LangChain tools backed by the official [Tabstack SDK](https://pypi.org/project/tabstack/).
+Give your [LangChain](https://python.langchain.com) agents the web without giving up your privacy.
+Cited research, clean page content, JSON that matches your schema, and browser tasks, all as native
+LangChain tools, backed by the official [Tabstack SDK](https://pypi.org/project/tabstack/). Never
+trained on. Private by default. Built by Mozilla.
 
 ## Why Tabstack
 
@@ -195,9 +196,7 @@ omitting them keeps Tabstack's defaults.
 
 ```python
 # Render a JS-heavy SPA, fresh, from the UK:
-extract_page_content_tool.invoke(
-    {"url": url, "effort": "max", "nocache": True, "country": "GB"}
-)
+extract_page_content_tool.invoke({"url": url, "effort": "max", "nocache": True, "country": "GB"})
 ```
 
 ## Async
