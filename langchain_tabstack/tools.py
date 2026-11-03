@@ -92,7 +92,7 @@ def _fetch_options(inp: Any) -> Dict[str, Any]:
 
 
 def _research_kwargs(inp: ResearchQuestionInput) -> Dict[str, Any]:
-    kwargs: Dict[str, Any] = {"query": inp.query, "mode": inp.mode or "balanced"}
+    kwargs: Dict[str, Any] = {"query": inp.query, "mode": inp.mode or "fast"}
     if inp.nocache is not None:
         kwargs["nocache"] = inp.nocache
     return kwargs

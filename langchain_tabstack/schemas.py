@@ -56,7 +56,10 @@ class ResearchQuestionInput(BaseModel):
     query: str = Field(description="The research question to answer using multiple web sources")
     mode: Optional[Literal["fast", "balanced"]] = Field(
         default=None,
-        description='Optional research mode: "fast" (quick) or "balanced" (default, more thorough)',
+        description=(
+            'Optional research mode: "fast" (default, quickest and cheapest) or '
+            '"balanced" (more thorough, Team and Pro plans only)'
+        ),
     )
     nocache: Optional[bool] = Field(default=None, description=_NOCACHE_DESCRIPTION)
 

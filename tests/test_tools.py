@@ -13,6 +13,7 @@ from langchain_tabstack import (
     TABSTACK_TOOLS,
     TOOL_DESCRIPTIONS,
     TOOL_NAMES,
+    ResearchQuestionInput,
     create_tabstack_tools,
 )
 
@@ -185,11 +186,27 @@ def test_extract_passes_fetch_options():
     )
 
 
+def test_research_mode_defaults_to_fast():
+    # "balanced" needs a Team or Pro plan, so defaulting to it breaks Trial and Starter keys.
+    assert ResearchQuestionInput(query="why?").mode is None
+    client = make_client()
+    tools = {t.name: t for t in create_tabstack_tools(client=client)}
+    tools["research_question"].invoke({"query": "why?"})
+    assert client.agent.research.call_args.kwargs["mode"] == "fast"
+
+
+def test_research_mode_override_and_nocache_forwarded():
+    client = make_client()
+    tools = {t.name: t for t in create_tabstack_tools(client=client)}
+    tools["research_question"].invoke({"query": "why?", "mode": "balanced", "nocache": True})
+    client.agent.research.assert_called_once_with(query="why?", mode="balanced", nocache=True)
+
+
 def test_research_returns_report_and_sources():
     client = make_client()
     tools = {t.name: t for t in create_tabstack_tools(client=client)}
     raw = tools["research_question"].invoke({"query": "why?"})
-    client.agent.research.assert_called_once_with(query="why?", mode="balanced")
+    client.agent.research.assert_called_once_with(query="why?", mode="fast")
     assert json.loads(raw) == {
         "answer": "The answer.",
         "sources": [
