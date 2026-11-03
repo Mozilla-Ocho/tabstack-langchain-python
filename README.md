@@ -189,15 +189,16 @@ omitting them keeps Tabstack's defaults.
     browser rendering, the `PlaywrightURLLoader` replacement).
   - `nocache`: `True` to bypass the cache.
   - `country`: ISO 3166-1 alpha-2 code (for example `"US"`) for geotargeted fetches.
-- `research_question`: `mode` (`"fast"` | `"balanced"`), `nocache`.
+- `research_question`:
+  - `mode`: `"fast"` (default) | `"balanced"`. `"balanced"` is more thorough and needs a Team or
+    Pro plan.
+  - `nocache`: `True` to bypass the cache.
 - `automate_browser_task`: `data` (context for form filling), `country`, `max_iterations`,
   `max_validation_attempts`.
 
 ```python
 # Render a JS-heavy SPA, fresh, from the UK:
-extract_page_content_tool.invoke(
-    {"url": url, "effort": "max", "nocache": True, "country": "GB"}
-)
+extract_page_content_tool.invoke({"url": url, "effort": "max", "nocache": True, "country": "GB"})
 ```
 
 ## Async
