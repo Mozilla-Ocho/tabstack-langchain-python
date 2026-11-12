@@ -248,6 +248,13 @@ except TabstackToolError as err:
   camelCase keys; this package returns JSON strings with snake_case keys, the LangChain-Python
   convention. The data is the same.
 
+## Feedback
+
+Report a problem or request a feature in
+[tabstack-feedback](https://github.com/Mozilla-Ocho/tabstack-feedback/issues/new/choose). Include
+the package version and the `x-trace-id` from the failing response when relevant. Never paste API
+keys or personal data into an issue.
+
 ## Links
 
 - [Tabstack docs](https://docs.tabstack.ai)
